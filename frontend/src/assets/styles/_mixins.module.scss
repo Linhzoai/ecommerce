@@ -1,0 +1,25 @@
+@mixin radius_common($r: 10px) {
+    border-radius: $r;
+}
+
+@mixin btn($w,$h,$color,$radius){
+    width: $w;
+    height: $h;
+    background-color: $color;
+    @include radius_common($radius);
+    border: 1px solid #e1e1e1;
+}
+
+@mixin flex_box_custom($x: center, $y: center, $gap:0px){
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+    gap: $gap;
+}
+
+@mixin grid_box_custom($col: 1, $row: 1, $gap:10px){
+    display: grid;
+    grid-template-columns: repeat($col, 1fr);
+    grid-template-rows: repeat($row, 1fr);
+    gap: $gap;
+}

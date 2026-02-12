@@ -1,0 +1,29 @@
+@use '@styles/mixins.module.scss' as mixins;
+@use '@styles/variables.module.scss' as *;
+.container {
+    @include mixins.flex_box_custom(center, center, 0);
+    flex-direction: column;
+    margin-top: 65px;
+    margin-bottom: 15px;
+    padding: 15px;
+
+    .desc {
+        color: $thr-color;
+        font-size: 14px;
+        line-height: 26px;
+        text-transform: uppercase;
+    }
+    .containerTile {
+        @include mixins.flex_box_custom(center, center, 50px);
+        width: 100%;
+        color: $thr-color;
+        .title {
+            font-size: 24px;
+            line-height: 32px;
+        }
+        .bar {  
+            border-top: 5px double #e1e1e1;
+            flex: 1;
+        }
+    }
+}

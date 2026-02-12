@@ -1,0 +1,29 @@
+@use '@styles/mixins.module.scss' as mixins;
+@use '@styles/variables.module.scss' as *;
+.boxTitle {
+        @include mixins.flex-box-custom(center, center, 10px);
+        width: 100%;
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e1e1e1;
+        a {
+            font-size: 17.64px;
+            text-decoration: none;
+            color: $four-color;
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                right: 0;
+                background-color: $four-color;
+                height: 3px;
+                transition: all 0.3s ease;
+                width: 0;
+            }
+            &:hover::after {
+                left: 0;
+                width: 100%;
+            }
+        }
+    }

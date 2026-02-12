@@ -1,0 +1,41 @@
+@use '@styles/variables.module.scss' as *;
+@use '@styles/mixins.module.scss' as mixins;
+
+.container {
+    @include mixins.flex-box-custom(space-between, center, 0px);
+    margin-top: 50px;
+    margin-bottom: 80px;
+    .containerLeft {
+        flex: 2;
+        padding: 15px;
+        img {
+            transition: transform 1s ease;
+            margin-left: auto;
+        }
+    }
+    .containerCenter {
+        @include mixins.flex-box-custom(center, center, 20px);
+        text-align: center;
+        flex-direction: column;
+        flex: 1;
+        padding: 15px;
+        h2 {
+            color: $four-color;
+            font-size: 36px;
+            line-height: 46px;
+            text-transform: capitalize;
+        }
+        p {
+            color: $thr-color;
+            font-size: 16px;
+            line-height: 26px;
+        }
+    }
+    .containerRight {
+        flex: 2;
+        padding: 15px;
+        img{
+            transition: transform 1s ease;
+        }
+    }
+}

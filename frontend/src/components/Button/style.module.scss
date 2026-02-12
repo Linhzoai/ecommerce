@@ -1,0 +1,29 @@
+@use '@styles/mixins.module.scss' as mixins;
+@use '@styles/variables.module.scss' as *;
+.btn {
+    padding: 13px 45px;
+    font-size: 14px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+.primaryBtn {
+    background-color: $primary-color;
+    color: $white-color;
+    &:hover {
+        cursor: pointer;
+        background-color: transparent;
+        color: $primary-color;
+    }
+}
+.secondaryBtn {
+    background-color: transparent;
+    color: $primary-color;
+    &:hover {
+        cursor: pointer;
+        background-color: $primary-color;
+        color: $white-color;
+    }
+}
+.small {
+    padding: 10px 31px;
+}

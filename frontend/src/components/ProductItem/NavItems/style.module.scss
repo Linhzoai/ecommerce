@@ -1,0 +1,21 @@
+@use "@styles/mixins.module.scss" as mixins;
+@use "@styles/variables.module.scss" as *;
+
+.container{
+    @include mixins.flex_box_custom(center,center,5px);
+    flex-direction: column;
+    background-color: $white-color;
+    .item{
+        @include mixins.flex_box_custom(center,center,0);
+        position: relative;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+        &:hover{
+            background-color: #ccc;
+        }
+ 
+    }
+    
+
+}

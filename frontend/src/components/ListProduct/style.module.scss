@@ -1,0 +1,11 @@
+
+@use "@styles/variables.module.scss" as *;
+@use "@styles/mixins.module.scss" as mixins;
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 410px);
+    gap: 10px;
+    padding: 15px;
+}

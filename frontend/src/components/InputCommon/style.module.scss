@@ -1,0 +1,47 @@
+@use '@styles/mixins.module.scss' as mixins;
+@use '@styles/variables.module.scss' as *;
+
+.container {
+    width: 100%;
+    margin-bottom: 20px;
+    &::selection{
+        background-color: #e7e7e7;
+    }
+    label {
+        margin-bottom: 5px;
+        color: $four-color;
+        font-size: 14px;
+        display: inline-block;
+    }
+    .boxInput {
+        position: relative;
+        color: $four-color;
+        font-size: 16px;
+        .input {
+            height: 37px;
+            width: 100%;
+            padding: 0 17px;
+            border: 1px solid rgb(225, 225, 225);
+            outline: none;
+            &:focus {
+                border-color: $primary-color;
+            }
+        }
+        .eye {
+            @include mixins.flex-box-custom(center, center);
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 37px;
+            border-left: 1px solid rgb(225, 225, 225);
+            cursor: pointer;
+            &:hover{
+                background-color: #f5f5f5;
+                outline: 1px solid rgb(225, 225, 225);
+                outline-offset: -2px;
+            }
+            
+        }
+    }
+}

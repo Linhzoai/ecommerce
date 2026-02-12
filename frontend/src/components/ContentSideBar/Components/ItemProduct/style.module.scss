@@ -1,0 +1,43 @@
+@use '@styles/mixins.module.scss' as mixins;
+@use '@styles/variables.module.scss' as *;
+
+.container{
+    @include mixins.flex-box-custom(center, center, 10px);
+    color: $four-color;
+    font-size: 14px;
+    position: relative;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-bottom: 10px;
+    img{
+        width: 70px;
+        height: auto;
+    }
+    .containerContent{
+        flex: 1;
+        .productName{
+            font-size: 16px;
+            color: $primary-color;
+        }
+        .productPrice{
+            font-size: 14px;
+            color: $four-color;
+        }
+    }
+    .close{
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: all 0.3s ease;
+    }
+    &:hover{
+        background-color: #f7f7f7;
+        .close{
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}

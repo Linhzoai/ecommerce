@@ -1,0 +1,55 @@
+@use '@styles/mixins.module.scss' as mixins;
+@use '@styles/variables.module.scss' as *;
+
+.box_img {
+    width: 100%;
+    height: 353px;
+    position: relative;
+    margin-bottom: 8px;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .img_show {
+        opacity: 0;
+        position: absolute;
+        inset: 0;
+        transition: opacity 0.3s ease;
+    }
+    &:hover {
+        .img_show {
+            opacity: 1;
+        }
+        .list_items {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    .list_items {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        transform: translateX(10px);
+    }
+}
+.content {
+    .product_name {
+        font-size: 16px;
+        line-height: 19px;
+        a{
+            color: $four-color;
+            text-decoration: none;
+            font-weight: 400;
+        }
+        margin-bottom: 5px;
+    }
+    .product_price{
+        font-size: 14px;
+        line-height: 20px;
+        color: $thr-color;
+        margin-bottom: 5px;
+    }
+}
