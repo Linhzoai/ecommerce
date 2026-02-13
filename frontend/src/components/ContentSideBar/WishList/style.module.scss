@@ -1,5 +1,12 @@
 @use '@styles/mixins.module.scss' as mixins;
 .container {
-    @include mixins.flex-box-custom(center, center, 0);
+    @include mixins.flex-box-custom(space-between, center, 20px);
     flex-direction: column;
+    height: 95vh;
+    .boxBtn{
+         @include mixins.flex-box-custom(center, center,10px);
+         flex-direction: column;
+         width: 100%;
+    }
+
 }

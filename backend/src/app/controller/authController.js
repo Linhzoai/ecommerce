@@ -11,7 +11,7 @@ const REFRESH_TOKEN_TTL = 14 * 24 * 60 * 60 * 1000;
 class AuthController {
   signUp = async (req, res) => {
     try {
-      const { email, password, fullname } = req.body;
+      const { email, password, fullname = "No name" } = req.body;
       //kiểm tra trường dl bi thiếu
       if ((!email || !password, !fullname))
         return res.status(400).json({ message: "Trường dữ liệu bị thiếu" });
@@ -75,7 +75,12 @@ class AuthController {
         refreshToken: refreshToken,
         expired_at: new Date(Date.now() + REFRESH_TOKEN_TTL),
       });
-      res.cookie("refreshToken", refreshToken);
+      res.cookie("refreshToken", refreshToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        maxAge: REFRESH_TOKEN_TTL,
+      });
       res.status(200).json({ message: "Đăng nhập thành công", accessToken });
     } catch (err) {
       console.log("Lỗi khi đăng nhập: ", err);
@@ -101,15 +106,27 @@ class AuthController {
       if (!session)
         return res.status(400).json({ message: "Không có refresh token" });
       const accessToken = jwt.sign(
-        {userId: session.userId},
+        { userId: session.userId },
         process.env.ACCESS_TOKEN_SECRET,
-        {expiresIn: ACCESS_TOKEN_TTL},
+        { expiresIn: ACCESS_TOKEN_TTL },
       );
       return res
         .status(200)
         .json({ message: "Làm mới token thành công", accessToken });
     } catch (err) {
       console.log("Lỗi khi làm mới token: ", err);
+      return res.status(500).json({ message: "Lỗi hệ thống" });
+    }
+  };
+  fetchMe = async (req, res) => {
+    try {
+      const userId = req.user.id;
+      const user = await User.findOne({ where: { id: userId } });
+      if (!user)
+        return res.status(400).json({ message: "Không có người dùng" });
+      return res.status(200).json(user);
+    } catch (err) {
+      console.log("Lỗi khi lấy thông tin người dùng: ", err);
       return res.status(500).json({ message: "Lỗi hệ thống" });
     }
   };

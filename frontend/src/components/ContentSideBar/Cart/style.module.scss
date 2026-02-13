@@ -2,4 +2,10 @@
 .container {
     @include mixins.flex-box-custom(center, center, 0);
     flex-direction: column;
+    .total{
+        @include mixins.flex-box-custom(center, space-between, 10px);
+    }
+    .boxBtn{
+        @include mixins.flex-box-custom(center, center, 10px);
+    }
 }

@@ -1,4 +1,4 @@
-import MainLayout from '@components/Layout/Layout';
+import MainLayout from '@/components/Layout/Layout';
 import styles from './style.module.scss';
 import CountDownBanner from '@components/CountDownBanner/CountDownBanner';
 import ProductItem from '@components/ProductItem/ProductIem';
@@ -20,10 +20,7 @@ export default function ListProduct() {
             <div className={container}>
                 <CountDownBanner />
                 {products.slice(0, 14).map((production, index) => (
-                    <ProductItem
-                        key={index}
-                        product={production}
-                    />
+                    <ProductItem key={index} product={production} />
                 ))}
             </div>
         </MainLayout>

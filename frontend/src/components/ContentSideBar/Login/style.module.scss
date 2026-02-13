@@ -9,8 +9,13 @@
     font-size: 14px;
     
     .checkBox {
-        @include mixins.flex-box-custom(center, center, 10px);
+        @include mixins.flex-box-custom(start, center, 10px);
         align-self: flex-start;
         margin-bottom: 20px;
+    }
+    a{
+        text-decoration: none;
+        color: $four-color;
+        margin-top: 10px;
     }
 }

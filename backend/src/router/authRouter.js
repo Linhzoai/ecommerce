@@ -10,4 +10,6 @@ router.post("/signout", AuthController.signOut);
 
 router.get("/refresh-token", AuthController.refreshToken);
 
+router.get("/me", AuthController.fetchMe);
+
 export default router;

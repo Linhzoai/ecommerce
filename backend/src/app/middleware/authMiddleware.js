@@ -11,7 +11,7 @@ const authMiddleware =  (req, res, next) => {
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async(err, decodedUser)=>{
             if(err){
                 console.log("Lỗi khi xác thực jwt", err);
-                return res.status(401).json({ message: "Token không hợp lệ" });
+                return res.status(403).json({ message: "Token không hợp lệ" });
             }
             const user = await User.findByPk(decodedUser.userId);
             if(!user){

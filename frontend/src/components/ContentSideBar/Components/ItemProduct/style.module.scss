@@ -2,7 +2,7 @@
 @use '@styles/variables.module.scss' as *;
 
 .container{
-    @include mixins.flex-box-custom(center, center, 10px);
+    @include mixins.flex-box-custom(center, start, 20px);
     color: $four-color;
     font-size: 14px;
     position: relative;
@@ -15,9 +15,11 @@
     }
     .containerContent{
         flex: 1;
+        margin-top: 5px;
         .productName{
             font-size: 16px;
             color: $primary-color;
+            margin-bottom: 10px;
         }
         .productPrice{
             font-size: 14px;

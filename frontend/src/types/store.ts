@@ -34,3 +34,16 @@ export interface SideBarStore {
     addListCompare: (product: Product) => void;
     removeListCompare: (productId: string) =>void
 }
+
+export interface AuthStore{
+    user: User | null;
+    accessToken:string | null,
+    loading: boolean,
+    callBack: number,
+    clearState: () => void,
+    signIn: (data: {email: string, password: string}) => Promise<void>,
+    signUp: (data: {email: string, password: string}) => Promise<void>,
+    signOut: () => Promise<void>,
+    refreshToken: () => Promise<void>,
+    fetchMe: () => Promise<void>,
+}

@@ -7,6 +7,11 @@
     &::selection{
         background-color: #e7e7e7;
     }
+    .error{
+        color: red;
+        font-size: 12px;
+        margin-top: 5px;
+    }
     label {
         margin-bottom: 5px;
         color: $four-color;
