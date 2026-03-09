@@ -20,7 +20,7 @@ export default {
       productId: {
         type: Sequelize.UUID,
         references: {
-          model: 'products',
+          model: 'Products',
           key: 'id',
         },
         onDelete: 'CASCADE',
