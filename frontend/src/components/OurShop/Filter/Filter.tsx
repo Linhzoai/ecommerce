@@ -6,7 +6,7 @@ import SelectBox from '@/components/SelectBox/SelectBox.tsx';
 import { useEffect } from 'react';
 export default function Filter() {
     const { container, right, left, boxIcon } = styles;
-    const { showOption, sortOption, sortId, showId, isShowGrid, setShowId, setSortId, setIsShowGrid, getProduct } =
+    const { showOption, sortOption, sortId, showId, setShowId, setSortId, setIsShowGrid, getProduct } =
         productStore();
     useEffect(() => {
         const query = `sort=${sortId}&limit=${showId}&page=1`;

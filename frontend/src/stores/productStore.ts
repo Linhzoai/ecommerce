@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { ProductStore, Product } from '@/types/store';
+import type { ProductStore } from '@/types/store';
 import { productServices } from '@/services/productServer';
 export const productStore = create<ProductStore>((set, get) => ({
     isLoading: false,

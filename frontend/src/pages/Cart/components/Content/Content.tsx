@@ -35,7 +35,7 @@ export default function Content() {
         iconMethod,
         totalPayment
     } = styles;
-    const { carts, deleteItemCart, updateCart, deleteCart, isLoading, productIdDelete } = cartStore();
+    const { carts, deleteItemCart, updateCart, deleteCart, isLoading } = cartStore();
     const navigate = useNavigate();
     const handleUpdateQuantity = (number: number, productId: string, size: string) => {
         const data = {
@@ -194,6 +194,7 @@ export default function Content() {
                                     content="CONTINUE SHOPPING"
                                     isPrimary={false}
                                     style={{ width: '100%' }}
+                                    onClick={handleNavigateShopping}
                                 ></Button>
                             </div>
                         </div>
