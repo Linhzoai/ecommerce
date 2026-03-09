@@ -34,9 +34,6 @@ export default function ProductDetail() {
         { label: '9', value: '9' },
         { label: '10', value: '10' }
     ];
-    const handleGetValue = (value: string, type: string) => {
-        console.log(value, type);
-    };
     const handleChoiceSize = (value: string)=>{
         setSizeChoice(value);
     }
