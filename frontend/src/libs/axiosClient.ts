@@ -1,4 +1,5 @@
 import { authService } from '@/services/authService';
+import { authStore } from '@/stores/authStore';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
@@ -15,7 +16,7 @@ const api = axios.create({
 
 
 api.interceptors.request.use((config)=>{
-    const accessToken = Cookies.get('accessToken');
+    const accessToken = authStore.getState().accessToken;
     if(accessToken){
         config.headers.Authorization =`Bearer ${accessToken}`;
     }
@@ -41,7 +42,7 @@ api.interceptors.response.use((res)=>(res),async (err)=>{
         try {
             const res = await authService.refreshToken();
             const newAccessToken = res.accessToken;
-            Cookies.set('accessToken', newAccessToken);
+            authStore.setState({accessToken: newAccessToken});
             originalRequest.headers ={
                 ...originalRequest.headers,
                 Authorization: `Bearer ${newAccessToken}`

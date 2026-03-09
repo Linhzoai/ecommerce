@@ -6,6 +6,7 @@ import Login from '@components/ContentSideBar/Login/Login';
 import Compare from '@components/ContentSideBar/Compare/Compare';
 import WishList from '@components/ContentSideBar/WishList/WishList';
 import Cart from '@components/ContentSideBar/Cart/Cart';
+import ProductDetail from '@components/ContentSideBar/ProductDetail/ProductDetail.tsx';
 export default function SideBarProvider() {
     const { container, overlay, sideBar, sideBarOpen, close } = styles;
     const { isOpen, toggleSideBar, type } = useSideBarStore();
@@ -19,6 +20,8 @@ export default function SideBarProvider() {
                 return <WishList />
             case 'cart':
                 return <Cart />
+            case 'product-detail':
+                return <ProductDetail />
             default:
                 return <Login />
         }
@@ -26,9 +29,9 @@ export default function SideBarProvider() {
     return (
         <div className={container}>
             <div className={cn(isOpen ? overlay : '')} onClick={toggleSideBar}></div>
-            <div className={cn(sideBar, isOpen ? sideBarOpen : '')}>
+            <div className={cn(sideBar, isOpen ? sideBarOpen : '')} style={{padding: type === 'product-detail' ? '15px' : '20px 30px', width: type === 'product-detail' ? 'calc(100% - 30px)' : ''}}>
                 {isOpen && (
-                    <div className={close} onClick={toggleSideBar}>
+                    <div className={close} onClick={toggleSideBar} >
                         <TfiClose size={16} />
                     </div>
                 )}

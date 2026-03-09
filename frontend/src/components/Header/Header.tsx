@@ -9,6 +9,8 @@ import useScrollHandling from '@/hooks/useScrollHandling';
 import { cn } from '@/libs/until.ts';
 import { useEffect, useState } from 'react';
 import { useSideBarStore } from '@/stores/useSideBarStore';
+import { cartStore } from '@/stores/cartStore';
+import { useNavigate } from 'react-router-dom';
 export default function Header() {
     const {
         container,
@@ -26,6 +28,8 @@ export default function Header() {
     const { scrollPosition } = useScrollHandling();
     const [isFixed, setIsFixed] = useState(false);
     const { handleOpenSideBar, listCompare } = useSideBarStore();
+    const { carts } = cartStore();
+    const navigate = useNavigate();
     useEffect(() => {
         setIsFixed(scrollPosition > 80);
     }, [scrollPosition]);
@@ -46,7 +50,7 @@ export default function Header() {
                         <Menu data={dataMenu.slice(0, 3)}></Menu>
                     </div>
                 </div>
-                <div className={containerLogo}>
+                <div className={containerLogo} onClick={() => navigate('/')}>
                     <img
                         src="https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Logo-retina.png"
                         alt="logo"
@@ -67,6 +71,7 @@ export default function Header() {
                                 <CiHeart size={26} onClick={() => handleOpenSideBar('wishlist')} />
                             </div>
                             <div className={boxCompare}>
+                                {carts.length > 0 && <span className={total}>{carts.length}</span>}
                                 <PiShoppingCartLight size={26} onClick={() => handleOpenSideBar('cart')} />
                             </div>
                         </div>

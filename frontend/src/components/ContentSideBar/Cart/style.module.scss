@@ -1,11 +1,30 @@
 @use '@styles/mixins.module.scss' as mixins;
 .container {
-    @include mixins.flex-box-custom(center, center, 0);
+    @include mixins.flex-box-custom(space-between, center, 0);
     flex-direction: column;
+    height: 100%;
     .total{
-        @include mixins.flex-box-custom(center, space-between, 10px);
+        @include mixins.flex-box-custom(space-between, center, 10px);
+        width: 100%;
     }
     .boxBtn{
         @include mixins.flex-box-custom(center, center, 10px);
+        flex-direction: column;
+        width: 100%;
+    }
+    .boxFooter{
+        @include mixins.flex-box-custom(center, center, 10px);
+        flex-direction: column;
+        width: 100%;
+    }
+    .containerProduct{
+        height: 80%;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
     }
 }

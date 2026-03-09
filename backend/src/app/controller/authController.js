@@ -102,9 +102,11 @@ class AuthController {
       const refreshToken = req.cookies.refreshToken;
       if (!refreshToken)
         return res.status(400).json({ message: "Không có refresh token" });
+      console.log(refreshToken);
       const session = await Session.findOne({ where: { refreshToken } });
       if (!session)
         return res.status(400).json({ message: "Không có refresh token" });
+      console.log(session);
       const accessToken = jwt.sign(
         { userId: session.userId },
         process.env.ACCESS_TOKEN_SECRET,

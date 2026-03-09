@@ -1,0 +1,23 @@
+@use '@styles/mixins.module.scss' as mixins;
+@use '@styles/variables.module.scss' as *;
+
+.container{
+    @include mixins.flex_box_custom(center, center, 10px);
+    position: absolute;
+    inset: 0;
+    background-color:rgba(162, 162, 162, 0.5);
+    .icon{
+        animation: rotate 1s linear infinite;
+        color: black;
+        opacity: 1;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

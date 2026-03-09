@@ -1,0 +1,105 @@
+@use '../../../assets/styles/variables.module.scss' as *;
+@use '../../../assets/styles/mixins.module.scss' as mixins;
+
+.container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    .img {
+        width: 100%;
+        height: 100%;
+        margin: 10px;
+    }
+    .product_name {
+        color: $four-color;
+        font-size: 24px;
+        margin-bottom: 12px;
+        font-weight: 400;
+        margin-top: 12px;
+    }
+    .product_price {
+        color: $secondary-color;
+        font-size: 19.6px;
+        margin-bottom: 12px;
+    }
+    .product_desc {
+        color: $thr-color;
+        font-size: 16px;
+        margin-bottom: 12px;
+        line-height: 25.6px;
+    }
+    .product_action {
+        .action_size {
+            margin-bottom: 5px;
+            font-size: 15.96px;
+            color: $thr-color;
+        }
+        .box_size {
+            @include mixins.flex_box_custom(start, center, 10px);
+            margin-bottom: 30px;
+            button {
+                @include mixins.flex_box_custom();
+                width: 30px;
+                height: 30px;
+                background-color: transparent;
+                border: 1px solid #e1e1e1;
+                font-size: 12px;
+                cursor: pointer;
+                &:hover {
+                    border: 1px solid $secondary-color;
+                }
+            }
+            .btn_clear {
+                border: none;
+                align-items: end;
+                text-decoration: underline;
+                font-size: 14px;
+                margin-left: 20px;
+                cursor: pointer;
+                &:hover {
+                    border:none;
+                    color: $thr-color;
+                }
+            }
+            .active{
+                border: 1px solid $four-color;
+            }
+        }
+        .box_addToCart {
+            @include mixins.flex_box_custom(space-between, center, 20px);
+            button {
+                flex: 1;
+            }
+        }
+        p:nth-of-type(2) {
+            text-transform: uppercase;
+            font-size: 11.76px;
+            color: $thr-color;
+            text-align: center;
+            margin-bottom: 10px;
+            margin-top: 10px;
+        }
+    }
+    .box_feature {
+        @include mixins.flex_box_custom(center, start, 15px);
+        flex-direction: column;
+        margin-top: 20px;
+        font-size: 15.96px;
+        color: $four-color;
+        .feature_atc {
+            @include mixins.flex_box_custom(center, center, 20px);
+        }
+        span {
+            color: $secondary-color;
+        }
+        .feature_share {
+            @include mixins.flex_box_custom(center, center, 10px);
+            span {
+                @include mixins.flex_box_custom(center, center, 10px);
+            }
+        }
+    }
+}

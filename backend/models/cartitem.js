@@ -8,6 +8,7 @@ export default (sequelize, DataTypes) => {
       CartItem.belongsTo(models.Product, {
         foreignKey: 'productId',
       });
+      
     }
   }
   CartItem.init({

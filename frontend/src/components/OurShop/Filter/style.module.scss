@@ -1,0 +1,15 @@
+@use '../../../assets/styles/variables.module.scss' as *;
+@use '../../../assets/styles/mixins.module.scss' as mixins;
+.container{
+    @include mixins.flex_box_custom(space-between, center, 0);
+    margin-bottom: 15px;
+    .left{
+        @include mixins.flex_box_custom(space-between, center, 20px);
+        .boxIcon{
+            @include mixins.flex_box_custom(space-between, center, 10px);
+        }
+    }
+    .right{
+        
+    }
+}

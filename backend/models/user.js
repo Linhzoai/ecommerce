@@ -9,6 +9,11 @@ export default (sequelize, DataTypes) => {
       User.hasMany(models.Cart, {
         foreignKey: "userId",
       });
+      User.belongsToMany(models.Product, {
+        through: models.Cart,
+        foreignKey: "userId",
+        otherKey: "productId",
+      });
     }
   }
 

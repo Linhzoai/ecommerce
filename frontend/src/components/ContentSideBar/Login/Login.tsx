@@ -8,6 +8,7 @@ import { z } from 'zod';
 import { useMemo, useState } from 'react';
 import { authStore } from '@/stores/authStore';
 import Cookies from 'js-cookie';
+import { useSideBarStore } from '@/stores/useSideBarStore';
 const createSchema = (isRegister: boolean) => {
     return z
         .object({
@@ -40,6 +41,7 @@ export default function Login() {
     const [isRegister, setIsRegister] = useState(false);
     const { container, checkBox } = style;
     const { signIn, signUp , loading} = authStore();
+    const {toggleSideBar} = useSideBarStore();
 
     const schema = useMemo(() => createSchema(isRegister), [isRegister]);
 
@@ -62,6 +64,7 @@ export default function Login() {
                 await signIn({ email, password }).then((res: any)=>{
                     Cookies.set('accessToken', res.accessToken)
                 });
+                toggleSideBar();
             } catch (error) {
                 console.log(error);
             }

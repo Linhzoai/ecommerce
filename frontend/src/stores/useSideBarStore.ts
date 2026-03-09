@@ -5,8 +5,9 @@ export const useSideBarStore = create<SideBarStore>((set,get) => ({
     type: '',
     listCompare: [],
     toggleSideBar: () => set((state) => ({ isOpen: !state.isOpen })),
-    handleOpenSideBar: (type: string) => {
-        set(() => ({ type }))
+    detailProduct: null,
+    handleOpenSideBar: (type, product=null) => {
+        set(() => ({ type ,detailProduct: product}))
         get().toggleSideBar();
     },
     addListCompare: (product) => {

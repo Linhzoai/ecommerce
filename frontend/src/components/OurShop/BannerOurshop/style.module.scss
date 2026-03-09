@@ -1,0 +1,16 @@
+@use '../../../assets/styles/variables.module.scss' as *;
+@use '../../../assets/styles/mixins.module.scss' as mixins;
+.container {
+    @include mixins.flex-box-custom(center, center, 0);
+    flex-direction: column;
+    height: 239px;
+    background: url('https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Background.jpeg') no-repeat center center/cover;
+    .title {
+        margin: 20px 0;
+        font-size: 28px;
+        color: $four-color;
+        text-transform: capitalize;
+        line-height: 40px;
+        font-weight: 400;
+    }
+}

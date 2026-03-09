@@ -7,6 +7,7 @@ const authMiddleware =  (req, res, next) => {
         return res.status(401).json({ message: "Không có access token" });
     }
     const token = authHeader.split(" ")[1];
+    console.log("token--------------",token);
     try {
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, async(err, decodedUser)=>{
             if(err){
@@ -22,6 +23,7 @@ const authMiddleware =  (req, res, next) => {
             next();
         })
     } catch (error) {
+        console.log("Lỗi khi xác thực jwt", error);
         return res.status(401).json({ message: "Token không hợp lệ" });
     }
 }

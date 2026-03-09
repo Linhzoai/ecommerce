@@ -3,13 +3,18 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { AiOutlineHeart } from "react-icons/ai";
 import { TfiReload } from "react-icons/tfi";
 import { IoEyeOutline } from "react-icons/io5";
-export default function NavItems({addCompare}: {addCompare: () => void}){
+
+interface NavItemsProps{
+    addCompare: () => void;
+    showDetail: () => void;
+}
+
+export default function NavItems({addCompare, showDetail}: NavItemsProps){
     const {container,item} = styles;
     return(
         <div className={container}>
            <div className={item}>
             <MdOutlineShoppingBag size={17} />
-
            </div>
            <div className={item}>
             <AiOutlineHeart size={17} />
@@ -17,7 +22,7 @@ export default function NavItems({addCompare}: {addCompare: () => void}){
            <div className={item} onClick={addCompare}>
             <TfiReload size={17} />
            </div>
-           <div className={item}>
+           <div className={item} onClick={showDetail}>
             <IoEyeOutline size={17} />
            </div>
         </div>

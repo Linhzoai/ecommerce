@@ -1,6 +1,25 @@
 @use '@styles/mixins.module.scss' as mixins;
 @use '@styles/variables.module.scss' as *;
 
+.container {
+    height: 515px;
+    cursor: pointer;
+}
+.container_list {
+    @include mixins.flex_box_custom(start, center, 20px);
+    height: 513px;
+    width: 100%;
+    cursor: pointer;
+    .box_img {
+        height: 100%;
+        width: 430.5px;
+    }
+    .content {
+        @include mixins.flex_box_custom(center, start, 10px);
+        flex-direction: column;
+        flex: 1;
+    }
+}
 .box_img {
     width: 100%;
     height: 353px;
@@ -39,17 +58,58 @@
     .product_name {
         font-size: 16px;
         line-height: 19px;
-        a{
+        a {
             color: $four-color;
             text-decoration: none;
             font-weight: 400;
         }
         margin-bottom: 5px;
     }
-    .product_price{
+    .product_price {
+        display: block;
         font-size: 14px;
         line-height: 20px;
         color: $thr-color;
         margin-bottom: 5px;
+    }
+    .box_size {
+        @include mixins.flex_box_custom(center, center, 10px);
+        margin-bottom: 10px;
+        .size {
+            @include mixins.flex_box_custom(center, center, 0px);
+            font-size: 10px;
+            width: 20px;
+            height: 20px;
+            text-transform: uppercase;
+            color: rgb(85, 85, 85);
+            cursor: pointer;
+            border: 1px solid #e2e2e2ff;
+
+            &:hover {
+                border-color: $secondary-color;
+                transition: border 300ms;
+            }
+        }
+    }
+    .size_act {
+        border: 1px solid $primary-color !important;
+    }
+    .clear_size {
+        justify-self: center;
+        margin-bottom: 12px;
+        font-size: 10px;
+        color: rgb(85, 85, 85);
+        cursor: pointer;
+        &:hover {
+            color: $secondary-color;
+            transition: color 300ms;
+        }
+    }
+    .text_center {
+        text-align: center;
+    }
+    .btn_add_to_cart {
+        display: flex;
+        justify-content: center;
     }
 }

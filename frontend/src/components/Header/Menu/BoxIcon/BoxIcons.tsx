@@ -1,4 +1,4 @@
-import styles from '../style.module.scss';
+import styles from '../../style.module.scss';
 
 interface BoxIconsProps {
     href: string;

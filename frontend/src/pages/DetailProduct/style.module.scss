@@ -1,0 +1,128 @@
+@use '../../assets/styles/variables.module.scss' as *;
+@use '../../assets/styles/mixins.module.scss' as mixins;
+
+.container {
+    margin-top: 83px;
+    .container_navigation {
+        @include mixins.flex_box_custom(space-between, center, 10px);
+        color: $secondary_color;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    .container_product {
+        @include mixins.flex_box_custom(center, start, 0);
+        .container_image {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 10px;
+            width: calc(50%);
+            margin-left: -10px;
+            img {
+                width: 100%;
+                min-width: 0;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .container_info {
+            padding: 10px;
+            width: calc(50% + 20px);
+            margin-right: -10px;
+            .product_name {
+                font-size: 24px;
+                color: $four-color;
+                margin-bottom: 20px;
+            }
+            .product_price {
+                color: $secondary-color;
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .product_desc {
+                margin-bottom: 20px;
+                color: $thr-color;
+                line-height: 25.6px;
+            }
+            .product_size {
+                color: $thr-color;
+                margin-bottom: 10px;
+            }
+            .box_size {
+                @include mixins.flex_box_custom(start, center, 10px);
+                margin-bottom: 30px;
+                button {
+                    @include mixins.flex_box_custom();
+                    width: 30px;
+                    height: 30px;
+                    background-color: transparent;
+                    border: 1px solid #e1e1e1;
+                    font-size: 12px;
+                    cursor: pointer;
+                    &:hover {
+                        border: 1px solid $secondary-color;
+                    }
+                }
+                .btn_clear {
+                    border: none;
+                    align-items: end;
+                    text-decoration: underline;
+                    font-size: 14px;
+                    margin-left: 20px;
+                    cursor: pointer;
+                    &:hover {
+                        border: none;
+                        color: $thr-color;
+                    }
+                }
+                .active {
+                    border: 1px solid $four-color;
+                }
+            }
+            .box_btn {
+                @include mixins.flex_box_custom(center, center, 10px);
+                flex-direction: column;
+                .box_cart {
+                    @include mixins.flex_box_custom(space-between, center, 30px);
+                    width: 100%;
+                    .box_quantity {
+                        @include mixins.flex_box_custom();
+                        input {
+                            width: 40px;
+                            height: 40px;
+                            text-align: center;
+                            border: 1px solid #e1e1e1;
+                            border-right: none;
+                            border-left: none;
+                        }
+                        span {
+                            @include mixins.flex_box_custom();
+                            height: 40px;
+                            border: 1px solid #e1e1e1;
+                            padding: 0 5px;
+                            cursor: pointer;
+                            color: $secondary-color;
+                        }
+                    }
+                }
+                .label_box {
+                    font-size: 11.76px;
+                    color: $four-color;
+                }
+                .box_buy{
+                    width: 100%;
+                }
+                button {
+                    padding: 13.3px 30.8px;
+                    width: 100%;
+                    flex: 1;
+                }
+            }
+        }
+    }
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

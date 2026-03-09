@@ -1,5 +1,5 @@
 import db from "../../../models/index.js";
-const {Cart, Product} = db;
+const {Cart, Product,User} = db;
 
 class cardController {
 
@@ -7,11 +7,12 @@ class cardController {
     addToCart = async (req, res) =>{
         try{
             const userId = req.user.id;
-            const {productId, quantity: quantity = 1, size} = req.body;
+            const {productId, quantity = 1, size} = req.body;
             if(!productId) return res.status(400).json({message: "Sản phẩm không tồn tại"});
             if(!quantity || quantity <= 0) return res.status(400).json({message: "Vui lòng chọn số lượng"});
             const product = await Product.findByPk(productId);
             if(!product) return res.status(400).json({message: "Sản phẩm không tồn tại"});
+            console.log("size: ", size);
             if(!product.size.some((s)=> s.name===size)) return res.status(400).json({message: "Sản phẩm không có size này"});
             const card = await Cart.findOne({where: {userId, productId, size}});
             if(card){
@@ -34,11 +35,22 @@ class cardController {
     getCart = async (req, res) =>{
        try{
         const userId = req.user.id;
-        const cart = await Cart.findAll({
-            where: {userId},
-            include: [{model: Product, attributes: ["id", "name", "price", "image"]}]
+        const cart = await Cart.findAll({where: {userId}, include: [{model: Product}]});
+        const product = cart.map((item)=>{
+            return {
+                quantity: item.quantity,
+                choiceSize: item.size,
+                id: item.productId,
+                name: item.Product.name,
+                price: item.Product.price,
+                images: item.Product.images,
+                size: item.Product.size,
+                material: item.Product.material,
+                description: item.Product.description,
+                total: item.Product.price * item.quantity,
+            }
         })
-        return res.status(200).json({message: "Lấy danh sách sản phẩm trong giỏ hàng thành công", cart});
+        return res.status(200).json({message: "Lấy danh sách sản phẩm trong giỏ hàng thành công", product});
        }
        catch(err){
         console.log("Lỗi khi lấy sản phẩm trong giỏ hàng: ", err);

@@ -2,10 +2,10 @@
 @use '@styles/variables.module.scss' as *;
 
 .container{
-    @include mixins.flex-box-custom(center, start, 20px);
+    @include mixins.flex-box-custom(center, center, 20px);
+    position: relative;
     color: $four-color;
     font-size: 14px;
-    position: relative;
     transition: all 0.3s ease;
     width: 100%;
     margin-bottom: 10px;

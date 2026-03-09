@@ -1,0 +1,37 @@
+.container {
+    .next,
+    .prev {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        top: 50%;
+        transform: translateX(50%);
+        z-index: 1;
+        cursor: pointer;
+        right: 0px;
+        color: #222;
+        border: none;
+        background-color: transparent;
+        font-size: 24px;
+        opacity: 0;
+        transition:
+            opacity 0.1s ease-in-out,
+            transform 0.3s ease-in-out;
+        &:hover{
+            color: #888;
+        }
+    }
+    .prev {
+        position: absolute;
+        transform: translateX(-50%);
+        left: 0px;
+        opacity: 0;
+    }
+    &:hover {
+        .prev,
+        .next {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}

@@ -51,7 +51,8 @@ class ProductController {
         limit: limit,
         offset: (page - 1) * limit,
       });
-      return res .status(200) .json({ message: "Lấy danh sách sản phẩm thành công", products ,total: products.length, page: page});
+      const total = await Product.count();
+      return res .status(200) .json({ message: "Lấy danh sách sản phẩm thành công", products ,total: total, page: page});
     } catch (err) {
       console.log("Lỗi khi lấy danh sách sản phẩm: ", err);
       return res.status(500).json({ message: "Lỗi hệ thống" });

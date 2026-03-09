@@ -1,0 +1,10 @@
+@use '../../assets/styles/variables.module.scss' as *;
+
+.container{
+    padding: 0px 2.9em 0px 1em;
+    color: $secondary-color;
+    border: 1px solid #e1e1e1;
+    box-sizing: border-box;
+    height: 2.642rem;
+    max-width: 100%;
+}

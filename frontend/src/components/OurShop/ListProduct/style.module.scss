@@ -1,0 +1,19 @@
+@use '../../../assets/styles/variables.module.scss' as *;
+@use '../../../assets/styles/mixins.module.scss' as mixins;
+
+.container_grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.container_list{
+    @include mixins.flex_box_custom(center, center, 10px);
+    flex-direction: column;
+}
+.container_btn{
+
+    @include mixins.flex_box_custom(center, center, 10px);
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}

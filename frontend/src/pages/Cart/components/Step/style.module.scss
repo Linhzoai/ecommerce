@@ -1,0 +1,47 @@
+@use '../../../../assets/styles/mixins.module.scss' as mixins;
+@use '../../../../assets/styles/variables.module.scss' as *;
+
+.container {
+    padding: 2.3vw 0;
+    margin-bottom: 2.3vw;
+    .boxStep {
+        @include mixins.flex_box_custom(center, center, 25px);
+        .containerStep {
+            @include mixins.flex_box_custom(center, center, 8px);
+            text-transform: uppercase;
+            font-weight: 400;
+            color: #9a9a9a;
+            .stepNumber {
+                @include mixins.flex_box_custom(center, center);
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 1px solid $border-color;
+                background-color: $white-color;
+                font-size: 16.8px;
+            }
+            .stepText {
+                font-size: 21px;
+            }
+            .active.stepNumber {
+                background-color: $primary-color;
+                color: $white-color;
+            }
+            .active.stepText {
+                color: $four-color;
+            }
+        }
+        .line {
+            min-width: 120px;
+            height: 1px;
+            background-color: $border-color;
+        }
+    }
+    .textNoti {
+        text-align: center;
+        font-size: 16px;
+        color: $four-color;
+        font-weight: 400;
+        padding-top: 2.3vw;
+    }
+}
