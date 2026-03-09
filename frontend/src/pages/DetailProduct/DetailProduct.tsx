@@ -75,11 +75,11 @@ export default function DetailProduct() {
             quantity,
             size: sizeChoice,
         }
-        addToCart(data).then(res=>{
+        addToCart(data).then(()=>{
             toast.success("Thêm sản phẩm vào giỏ hàng thàng công");
             handleOpenSideBar("cart");
         })
-        .catch(err=>{
+        .catch(()=>{
             toast.error("Lỗi khi thêm sản phẩm");
         })
     }
