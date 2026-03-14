@@ -9,7 +9,6 @@ import { useMemo, useState } from 'react';
 import { authStore } from '@/stores/authStore';
 import Cookies from 'js-cookie';
 import { useSideBarStore } from '@/stores/useSideBarStore';
-import { toast } from 'react-toastify';
 const createSchema = (isRegister: boolean) => {
     return z
         .object({
