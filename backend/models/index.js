@@ -11,12 +11,39 @@ const env = process.env.NODE_ENV || "development";
 
 const config = configFile[env];
 const db = {};
-const sequelize = new Sequelize(
-  config.database,
-  config.username,
-  config.password,
-  config,
-);
+
+let sequelize;
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: process.env.DB_DIALECT ||  "postgres",
+    protocol: process.env.DB_PROTOCOL || "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
+    logging: false,
+  });
+} else {
+  // Bật bắt buộc SSL nếu dialect là postgres (phòng hờ config bị thiếu)
+  if (config.dialect === 'postgres') {
+    config.dialectOptions = {
+      ...config.dialectOptions,
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    };
+  }
+
+  sequelize = new Sequelize(
+    config.database,
+    config.username,
+    config.password,
+    config
+  );
+}
 
 const files = fs
   .readdirSync(__dirname)
