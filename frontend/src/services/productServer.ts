@@ -11,7 +11,7 @@ export const productServices = {
         return res.data;
     },
     async getRelatedProduct(id: string) {
-        const res = await api.get(`/product/related/${id}`);
+        const res = await api.get(`/product/${id}/related`);
         return res.data;
     },
     async addProduct(product: Product) {

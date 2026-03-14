@@ -35,8 +35,9 @@ export const authStore = create<AuthStore>()(
                     set({ loading: true });
                     await authService.signUp(data);
                     toast.success('Đăng ký thành công');
-                } catch (error: any) {
-                    toast.error(error.response.data.message);
+                } catch (error) {
+                    console.log(error);
+                    toast.error("tạo tk thất bại");
                     throw error;
                 } finally {
                     set({ loading: false });

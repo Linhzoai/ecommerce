@@ -9,6 +9,7 @@ import { useMemo, useState } from 'react';
 import { authStore } from '@/stores/authStore';
 import Cookies from 'js-cookie';
 import { useSideBarStore } from '@/stores/useSideBarStore';
+import { toast } from 'react-toastify';
 const createSchema = (isRegister: boolean) => {
     return z
         .object({
@@ -55,8 +56,8 @@ export default function Login() {
                 const { email, password } = data;
                 await signUp({ email, password });
                 setIsRegister(false);
-            } catch (error) {
-                console.log(error);
+            } catch (error: any) {
+                toast.error(error.message);
             }
         } else {
             try {
@@ -65,8 +66,8 @@ export default function Login() {
                     Cookies.set('accessToken', res.accessToken)
                 });
                 toggleSideBar();
-            } catch (error) {
-                console.log(error);
+            } catch (error: any) {
+                toast.error(error.message);
             }
         }
     };

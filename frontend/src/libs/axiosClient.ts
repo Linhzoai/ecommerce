@@ -14,48 +14,49 @@ const api = axios.create({
     }
 });
 
-
-api.interceptors.request.use((config)=>{
+api.interceptors.request.use((config) => {
     const accessToken = authStore.getState().accessToken;
-    if(accessToken){
-        config.headers.Authorization =`Bearer ${accessToken}`;
+    if (accessToken) {
+        config.headers.Authorization = `Bearer ${accessToken}`;
     }
     return config;
-})
+});
 
-api.interceptors.response.use((res)=>(res),async (err)=>{
-    if(!err.response) return Promise.reject(err);
-    const originalRequest = err.config;
+api.interceptors.response.use(
+    (res) => res,
+    async (err) => {
+        if (!err.response) return Promise.reject(err);
+        const originalRequest = err.config;
 
-    if(
-        originalRequest.url.includes('/auth/refresh') ||
-        originalRequest.url.includes('/auth/sign-in') ||
-        originalRequest.url.includes('/auth/sign-up')
-    ){
-        return Promise.reject(err);
-    }
+        if (
+            originalRequest.url.includes('/auth/refresh') ||
+            originalRequest.url.includes('/auth/sign-in') ||
+            originalRequest.url.includes('/auth/sign-up')
+        ) {
+            return Promise.reject(err);
+        }
 
-    originalRequest._retry = originalRequest._retry || 0;
-    
-    if(err.response.status === 403  && originalRequest._retry <4 ){
-        originalRequest._retry++;
-        try {
-            const res = await authService.refreshToken();
-            const newAccessToken = res.accessToken;
-            authStore.setState({accessToken: newAccessToken});
-            originalRequest.headers ={
-                ...originalRequest.headers,
-                Authorization: `Bearer ${newAccessToken}`
+        originalRequest._retry = originalRequest._retry || 0;
+
+        if (err.response.status === 403 && originalRequest._retry < 4) {
+            originalRequest._retry++;
+            try {
+                const res = await authService.refreshToken();
+                const newAccessToken = res.accessToken;
+                authStore.setState({ accessToken: newAccessToken });
+                originalRequest.headers = {
+                    ...originalRequest.headers,
+                    Authorization: `Bearer ${newAccessToken}`
+                };
+                return api(originalRequest);
+            } catch (error) {
+                Cookies.remove('accessToken');
+                localStorage.clear();
+                sessionStorage.clear();
+                return Promise.reject(error);
             }
-            return api(originalRequest);
-        } catch (error) {
-            Cookies.remove('accessToken');
-            localStorage.clear();
-            sessionStorage.clear();
-            return Promise.reject(error);
         }
     }
-
-})
+);
 
 export default api;

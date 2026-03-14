@@ -10,6 +10,7 @@ export const productStore = create<ProductStore>((set, get) => ({
     page: 0,
     total: 0,
     isLoadingMore: false,
+    relatedProduct: [],
     sortOption: [
         { label: 'Default sorting', value: '0' },
         { label: 'Sort by popularity', value: '1' },
@@ -72,5 +73,17 @@ export const productStore = create<ProductStore>((set, get) => ({
         } finally {
             set({ isLoading: false });
         }
+    },
+    getRelatedProduct: async (id) => {
+        try {
+            set({ isLoading: true });
+            const response = await productServices.getRelatedProduct(id);
+            set({ relatedProduct: response.relatedProducts });
+        } catch (error) {
+            console.log(error);
+        } finally {
+            set({ isLoading: false });
+        }
     }
+
 }));

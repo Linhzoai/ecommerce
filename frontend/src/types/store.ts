@@ -58,6 +58,7 @@ export interface ProductStore {
     showId: number;
     isShowGrid: boolean;
     products: Product[];
+    relatedProduct: Product[];
     page: number;
     total: number;
     sortOption: { label: string; value: string }[];
@@ -69,6 +70,7 @@ export interface ProductStore {
     setProducts: (products: Product[]) => void;
     loadMoreProducts: (query: string) => Promise<void>;
     getProductById: (id: string) => Promise<Product | null>;
+    getRelatedProduct: (id: string) => Promise<void>;
 }
 
 export interface CartStore {

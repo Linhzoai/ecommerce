@@ -79,12 +79,16 @@ export default function ProductItem({ product, isHomePage = true }: ProductItemP
         navigate(`/product/${product.id}`);
     };
 
+    const stopPropagation = (e: React.MouseEvent) => {
+        e.stopPropagation();
+    };
+
     return (
         <div className={cn(isShowGrid ? container : container_list)} onClick={handleNavigateToDetail}>
             <div className={box_img}>
                 <img src={product.images[0]} alt="" />
                 <img className={img_show} src={product.images[1]} alt="" />
-                <div className={list_items}>
+                <div className={list_items} onClick={stopPropagation}>
                     <NavItems addCompare={addListCompareProduct} showDetail={handleShowDetail} />
                 </div>
             </div>
@@ -93,31 +97,34 @@ export default function ProductItem({ product, isHomePage = true }: ProductItemP
                     <>
                         <div className={box_size}>
                             {product.size.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className={cn(size, sizeChoose === item.name ? size_act : '')}
-                                    onClick={() => handleChooseSize(item.name)}
-                                >
+                                <div key={index} className={cn(size, sizeChoose === item.name ? size_act : '')} onClick={(e) => { e.stopPropagation(); handleChooseSize(item.name); }} >
                                     {item.name}
                                 </div>
                             ))}
                         </div>
                         {sizeChoose && (
-                            <div className={clear_size} onClick={() => setSizeChoose('')}>
+                            <div className={clear_size} onClick={(e) => { e.stopPropagation(); setSizeChoose(''); }} >
                                 clear
                             </div>
                         )}
                     </>
                 )}
                 <h2 className={cn(product_name, !isHomePage && text_center)}>
-                    <a href="#" onClick={handleNavigateToDetail}>
+                    <a href="#" onClick={(e) => { e.preventDefault(); handleNavigateToDetail(); }} >
                         {product.name}
                     </a>
                 </h2>
                 <span className={cn(product_price, !isHomePage && text_center)}>${product.price}</span>
                 {!isHomePage && (
                     <div className={btn_add_to_cart}>
-                        <Button content="Add to cart" style={{ padding: '10.5px 30px' }} onClick={handleAddToCart} />
+                        <Button
+                            content="Add to cart"
+                            style={{ padding: '10.5px 30px' }}
+                            onClick={(e: React.MouseEvent) => {
+                                e.stopPropagation();
+                                handleAddToCart();
+                            }}
+                        />
                     </div>
                 )}
             </div>
