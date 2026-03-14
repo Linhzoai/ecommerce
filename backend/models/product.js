@@ -42,7 +42,14 @@ export default (sequelize, DataTypes) => {
       type: {
         type: DataTypes.VIRTUAL(DataTypes.INTEGER),
         get() {
-          const size = JSON.parse(this.getDataValue("size"));
+          let size = this.getDataValue("size");
+          if (typeof size === "string") {
+            try {
+              size = JSON.parse(size);
+            } catch {
+              size = [];
+            }
+          }
           return Array.isArray(size) ? size.length : 0;
         },
       },
