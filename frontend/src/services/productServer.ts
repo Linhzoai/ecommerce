@@ -3,7 +3,8 @@ import type { Product } from '../types/store';
 
 export const productServices = {
     async getProduct(query?: string) {
-        const res = await api.get(`/product?${query}`);
+        const url = query ? `/product?${query}` : '/product';
+        const res = await api.get(url);
         return res.data;
     },
     async getProductById(id: string) {

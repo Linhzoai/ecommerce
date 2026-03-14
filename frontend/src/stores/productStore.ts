@@ -44,6 +44,7 @@ export const productStore = create<ProductStore>((set, get) => ({
             set({ isLoading: false });
         }
     },
+    
     setProducts: (products) => {
         set({ products });
     },
