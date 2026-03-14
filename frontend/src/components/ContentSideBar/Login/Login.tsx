@@ -57,7 +57,7 @@ export default function Login() {
                 await signUp({ email, password });
                 setIsRegister(false);
             } catch (error: any) {
-                toast.error(error.message);
+                console.log(error);
             }
         } else {
             try {
@@ -67,7 +67,7 @@ export default function Login() {
                 });
                 toggleSideBar();
             } catch (error: any) {
-                toast.error(error.message);
+                console.log(error);
             }
         }
     };
