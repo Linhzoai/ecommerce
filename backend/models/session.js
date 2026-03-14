@@ -22,6 +22,7 @@ export default (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Session",
+      tableName: "Sessions",
       timestamps: true,
       underscored: true,
     },

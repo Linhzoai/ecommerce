@@ -19,7 +19,7 @@ export default (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Cart',
-    tableName: "cartitems",
+    tableName: "CartItems",
   });
   return CartItem;
 };

@@ -72,6 +72,7 @@ export default (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Product",
+      tableName: "Products",
       timestamps: true,
     },
   );

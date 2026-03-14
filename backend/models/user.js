@@ -42,6 +42,7 @@ export default (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "User",
+      tableName: "Users",
       timestamps: true,
       underscored: true,
     },
