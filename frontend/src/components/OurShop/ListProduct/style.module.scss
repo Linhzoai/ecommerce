@@ -17,3 +17,14 @@
     margin-top: 20px;
     margin-bottom: 40px;
 }
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container_grid {
+        grid-template-columns: repeat(2, 1fr); // Cột đôi ở tab listProduct
+        gap: 12px;
+    }
+    .container_btn {
+        margin-bottom: 30px;
+    }
+}

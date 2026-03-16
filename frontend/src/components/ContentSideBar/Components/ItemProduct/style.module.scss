@@ -43,3 +43,17 @@
         }
     }
 }
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        pointer-events: auto;
+        padding-right: 35px; // Add space so delete button does not overlap text
+        
+        .close {
+            opacity: 1;
+            transform: translateX(0);
+            right: 0px; // align right correctly
+        }
+    }
+}

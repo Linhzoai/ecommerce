@@ -3,14 +3,16 @@
 
 .container{
     width: 100%;
+    min-height: 480px;
     height: 100%;
     background: url("https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/photo-of-man-wearing-white-hoodie-5474310.jpeg") no-repeat center center/cover;
     grid-area: span 1/ span 2;
     @include mixins.flex_box_custom(center, center, 10px);
     flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
     .container_title{
-        width: 573px;
-        height: 40px;
+        max-width: 100%;
         margin-bottom: 20px;
         .title{
             font-size: 28px;
@@ -20,5 +22,26 @@
             text-align: center;
         }
 
+    }
+}
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        min-height: 350px; // Thấp hơn trên điện thoại
+        grid-column: span 2; // Full màn hình mobile (vì ListProduct là 2 cột)
+        .container_title {
+            margin-bottom: 15px;
+            .title {
+                font-size: 22px;
+                line-height: 28px;
+            }
+        }
+    }
+}
+
+@include mixins.tablet {
+    .container {
+        grid-column: span 2;
     }
 }

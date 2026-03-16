@@ -12,5 +12,34 @@
         text-transform: capitalize;
         line-height: 40px;
         font-weight: 400;
+        position: relative;
+        z-index: 1;
+    }
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.1); 
+    }
+}
+
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        height: 160px;
+        border-radius: 8px;
+        overflow: hidden;
+        &::after {
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3));
+        }
+        .title {
+            font-size: 26px;
+            line-height: 34px;
+            font-weight: 500;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.15);
+            margin: 0;
+        }
     }
 }

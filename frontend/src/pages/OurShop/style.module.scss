@@ -18,3 +18,15 @@
         padding: 15px 0;
     }
 }
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        padding: 0 16px; // Adjust sides padding
+        margin-top: 60px; // Thêm margin top phù hợp header trên đt
+        .container_back {
+            font-size: 13px;
+            padding: 12px 0;
+        }
+    }
+}

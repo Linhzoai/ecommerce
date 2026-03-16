@@ -4,6 +4,7 @@ import Menu from './Menu/Menu';
 import styles from './style.module.scss';
 import { CiHeart } from 'react-icons/ci';
 import { PiShoppingCartLight } from 'react-icons/pi';
+import { HiOutlineMenuAlt2 } from 'react-icons/hi';
 import { RefreshCw } from 'lucide-react';
 import useScrollHandling from '@/hooks/useScrollHandling';
 import { cn } from '@/libs/until.ts';
@@ -23,7 +24,8 @@ export default function Header() {
         fixedHeader,
         absoluteHeader,
         boxCompare,
-        total
+        total,
+        mobileMenuIcon
     } = styles;
     const { scrollPosition } = useScrollHandling();
     const [isFixed, setIsFixed] = useState(false);
@@ -37,6 +39,9 @@ export default function Header() {
         <div className={cn(container, isFixed ? fixedHeader : absoluteHeader)}>
             <div className={containerHeader}>
                 <div className={containerBox}>
+                    <div className={mobileMenuIcon} onClick={() => handleOpenSideBar('menu')}>
+                        <HiOutlineMenuAlt2 size={26} color="black" />
+                    </div>
                     <div className={containerBoxIcon}>
                         {dataBoxIcon.map((item, index) => (
                             <BoxIcons

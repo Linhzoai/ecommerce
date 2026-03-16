@@ -1,11 +1,26 @@
-
 @use "@styles/variables.module.scss" as *;
 @use "@styles/mixins.module.scss" as mixins;
 
 .container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 410px);
-    gap: 10px;
+    grid-auto-rows: min-content;
+    gap: 15px;
     padding: 15px;
+}
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        grid-template-columns: repeat(2, 1fr); // 2 cột cho mobile
+        gap: 10px;
+        padding: 10px;
+    }
+}
+
+@include mixins.tablet {
+    .container {
+        grid-template-columns: repeat(3, 1fr); // 3 cột cho tablet
+        gap: 15px;
+    }
 }

@@ -10,6 +10,37 @@
         }
     }
     .right{
+        @include mixins.flex_box_custom(center, center, 10px);
+    }
+}
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px; // Giãn cách giữa left và right
+        margin-bottom: 20px;
         
+        .left {
+            width: 100%;
+            justify-content: space-between; // Để SelectBox và Icon ra hai góc
+            
+            // Có thể chỉnh icon to hơn 1 chút nếu cần để dễ bấm
+            .boxIcon {
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+        }
+        
+        .right {
+            width: 100%;
+            justify-content: space-between; // Căn Show text và SelectBox
+            border-top: 1px solid rgba(0,0,0,0.05); // Đường phân cách nhẹ
+            padding-top: 12px;
+            font-size: 13px;
+        }
     }
 }

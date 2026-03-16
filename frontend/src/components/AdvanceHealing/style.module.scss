@@ -12,6 +12,7 @@
         font-size: 14px;
         line-height: 26px;
         text-transform: uppercase;
+        text-align: center;
     }
     .containerTile {
         @include mixins.flex_box_custom(center, center, 50px);
@@ -20,10 +21,44 @@
         .title {
             font-size: 24px;
             line-height: 32px;
+            text-align: center;
+            white-space: nowrap;
         }
         .bar {  
             border-top: 5px double #e1e1e1;
             flex: 1;
         }
+    }
+}
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        margin-top: 20px;
+        padding: 10px 15px;
+        .desc {
+            font-size: 13px;
+            line-height: 22px;
+            letter-spacing: 0.5px;
+        }
+        .containerTile {
+            gap: 16px;
+            .title {
+                font-size: 22px;
+                line-height: 28px;
+                font-weight: 500;
+                color: $four-color;
+            }
+            .bar {
+                border-top: 3px double #eaea00; // Thay đổi nhẹ để mỏng mềm hơn
+                border-top-color: #ededed;
+            }
+        }
+    }
+}
+
+@include mixins.tablet {
+    .container {
+        margin-top: 45px;
     }
 }

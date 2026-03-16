@@ -29,3 +29,65 @@
         }
     }
 }
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        width: calc(100% - 30px);
+        margin: 0 auto;
+        margin-top: -40px; // Floating effect
+        margin-bottom: 30px;
+        padding: 20px 15px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15); // Nổi bật
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); // 2 cột x 2 hàng
+        gap: 15px;
+        box-sizing: border-box;
+
+        .containerBox {
+            width: 100%;
+            padding: 5px;
+            @include mixins.flex_box_custom(center, center, 10px);
+            flex-direction: column;
+            text-align: center;
+
+            // Optional separator line
+            // border-right: 1px solid rgba(255,255,255,0.1);
+
+            .containerContent {
+                @include mixins.flex_box_custom(center, center, 4px);
+                height: auto;
+
+                .title {
+                    font-size: 14px;
+                    line-height: 18px;
+                    font-weight: 500;
+                }
+                .content {
+                    font-size: 12px;
+                    line-height: 16px;
+                }
+            }
+            // Sửa icon kích thước bé đi một chút nếu có svg ở trong HTML
+            svg {
+                width: 24px;
+                height: 24px;
+                margin-bottom: 4px;
+            }
+        }
+    }
+}
+
+@include mixins.tablet {
+    .container {
+        width: 100%;
+        margin-top: -40px;
+        padding: 20px 15px;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        .containerBox {
+            width: calc(50% - 20px);
+        }
+    }
+}

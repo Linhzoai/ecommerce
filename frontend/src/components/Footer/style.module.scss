@@ -3,9 +3,10 @@
 
 .container{
     @include mixins.flex-box-custom(center, center, 0px);
-    padding: 40px 0;
+    padding: 40px 15px;
     background-color: $footer-color;
     color: $white-color;
+    box-sizing: border-box;
     .containerFooter{
         @include mixins.flex-box-custom(center, center, 0px);
         flex-direction: column;
@@ -19,6 +20,7 @@
             @include mixins.flex-box-custom(center, center, 50px);
             margin-top: 15px;
             margin-bottom: 40px;
+            flex-wrap: wrap;
             a{
                 text-decoration: none;
                 font-size: 15px;
@@ -33,6 +35,7 @@
             img{
                 width: 270px;
                 height: auto;
+                max-width: 100%;
             }
             margin-bottom: 40px;
         }
@@ -40,5 +43,50 @@
             font-size: 16px;
         }
 
+    }
+}
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        padding: 40px 15px;
+        .containerFooter {
+            .containerNav {
+                gap: 15px;
+                margin-bottom: 30px;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                a {
+                    font-size: 14px;
+                    width: 45%; 
+                    padding: 8px 0;
+                    border-bottom: 1px solid rgba(255,255,255,0.05);
+                }
+            }
+            .desc {
+                font-size: 13px;
+                color: rgba(255,255,255,0.7);
+                margin-bottom: 30px;
+            }
+            .payment {
+                margin-bottom: 30px;
+            }
+            .copyright {
+                font-size: 12px;
+                line-height: 20px;
+                color: rgba(255,255,255,0.7);
+            }
+        }
+    }
+}
+
+@include mixins.tablet {
+    .container {
+        .containerFooter {
+            .containerNav {
+                gap: 25px;
+            }
+        }
     }
 }

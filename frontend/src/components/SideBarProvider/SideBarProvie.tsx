@@ -7,6 +7,7 @@ import Compare from '@components/ContentSideBar/Compare/Compare';
 import WishList from '@components/ContentSideBar/WishList/WishList';
 import Cart from '@components/ContentSideBar/Cart/Cart';
 import ProductDetail from '@components/ContentSideBar/ProductDetail/ProductDetail.tsx';
+import MobileMenu from '@components/ContentSideBar/MobileMenu/MobileMenu';
 export default function SideBarProvider() {
     const { container, overlay, sideBar, sideBarOpen, close } = styles;
     const { isOpen, toggleSideBar, type } = useSideBarStore();
@@ -22,6 +23,8 @@ export default function SideBarProvider() {
                 return <Cart />
             case 'product-detail':
                 return <ProductDetail />
+            case 'menu':
+                return <MobileMenu />
             default:
                 return <Login />
         }
