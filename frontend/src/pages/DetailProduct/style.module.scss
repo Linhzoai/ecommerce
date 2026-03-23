@@ -336,3 +336,343 @@ input[type='number']::-webkit-inner-spin-button {
         text-align: center;
     }
 }
+
+// =============================================
+// RESPONSIVE MOBILE (max-width: 767px)
+// =============================================
+@include mixins.mobile {
+    .container {
+        margin-top: 60px;
+
+        .container_navigation {
+            font-size: 12px;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .container_product {
+            flex-direction: column;
+            gap: 0;
+
+            // --- Image grid → horizontal scroll strip ---
+            .container_image {
+                width: 100%;
+                margin-left: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                gap: 8px;
+                padding-bottom: 8px;
+                -webkit-overflow-scrolling: touch;
+
+                // Hide scrollbar but keep functionality
+                &::-webkit-scrollbar {
+                    height: 3px;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background: $border-color;
+                    border-radius: 10px;
+                }
+
+                .image_wrapper {
+                    flex: 0 0 85vw;
+                    max-width: 85vw;
+                    scroll-snap-align: start;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    aspect-ratio: 3 / 4;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            // --- Info panel: full width, clean spacing ---
+            .container_info {
+                width: 100%;
+                margin-right: 0;
+                padding: 16px 4px;
+
+                .product_name {
+                    font-size: 20px;
+                    margin-bottom: 12px;
+                    line-height: 1.3;
+                }
+
+                .product_price {
+                    font-size: 18px;
+                    margin-bottom: 12px;
+                    font-weight: 500;
+                }
+
+                .product_desc {
+                    font-size: 14px;
+                    line-height: 22px;
+                    margin-bottom: 14px;
+                }
+
+                .product_size {
+                    font-size: 13px;
+                    margin-bottom: 8px;
+                }
+
+                .box_size {
+                    flex-wrap: wrap;
+                    gap: 8px;
+                    margin-bottom: 20px;
+
+                    button {
+                        width: 36px;
+                        height: 36px;
+                        font-size: 12px;
+                    }
+
+                    .btn_clear {
+                        font-size: 13px;
+                        margin-left: 8px;
+                    }
+                }
+
+                .box_btn {
+                    gap: 10px;
+
+                    .box_cart {
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 10px;
+
+                        .box_quantity {
+                            justify-content: center;
+
+                            input {
+                                width: 60px;
+                                height: 44px;
+                                font-size: 15px;
+                            }
+
+                            span {
+                                height: 44px;
+                                padding: 0 14px;
+                                font-size: 18px;
+                            }
+                        }
+
+                        // ADD TO CART button full width
+                        button {
+                            width: 100%;
+                            padding: 14px 0;
+                            font-size: 14px;
+                            letter-spacing: 0.5px;
+                        }
+                    }
+
+                    .label_box {
+                        font-size: 11px;
+                        text-align: center;
+                    }
+
+                    .box_buy {
+                        button {
+                            width: 100%;
+                            padding: 14px 0;
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+                .box_icon {
+                    margin-top: 14px;
+                    margin-bottom: 14px;
+                    gap: 8px;
+
+                    span {
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+
+                .cartAdditional {
+                    margin-top: 20px;
+
+                    fieldset {
+                        padding: 16px 6px;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                        justify-content: center;
+
+                        legend {
+                            font-size: 12px;
+                        }
+
+                        .iconMethod {
+                            img {
+                                max-width: 40px;
+                            }
+
+                            span {
+                                font-size: 11px;
+                                padding: 4px;
+                            }
+                        }
+                    }
+
+                    .totalPayment {
+                        font-size: 13px;
+                        margin-top: 8px;
+                    }
+                }
+
+                .product_meta {
+                    margin-bottom: 14px;
+                    gap: 6px;
+
+                    div {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        .content_inner {
+            padding: 0 10px;
+
+            .item {
+                span {
+                    width: 50%;
+                    font-size: 13px;
+                }
+
+                .item_value {
+                    padding: 12px 0 12px 8px;
+                }
+
+                .item_title {
+                    font-size: 13px;
+                    padding: 0.9em 0.5em 0.9em 0;
+                }
+            }
+        }
+
+        .container_title {
+            font-size: 13px;
+
+            div {
+                font-size: 13px;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+            }
+
+            p {
+                font-size: 13px;
+                margin-bottom: 14px;
+            }
+        }
+
+        .container_rating {
+            p {
+                font-size: 14px;
+            }
+
+            div {
+                gap: 12px;
+            }
+        }
+
+        .container_input {
+            font-size: 14px;
+
+            textarea {
+                height: 140px;
+            }
+
+            input {
+                height: 38px;
+            }
+        }
+    }
+
+    .active.content {
+        .content_inner {
+            padding: 10px;
+        }
+    }
+
+    .container_related {
+        margin-top: 24px;
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 14px;
+        }
+    }
+}
+
+// =============================================
+// RESPONSIVE TABLET (768px – 1024px)
+// =============================================
+@include mixins.tablet {
+    .container {
+        margin-top: 70px;
+
+        .container_product {
+            gap: 0;
+
+            .container_image {
+                width: 48%;
+                margin-left: -6px;
+                padding: 6px;
+                gap: 8px;
+
+                .image_wrapper {
+                    border-radius: 4px;
+                    overflow: hidden;
+                }
+            }
+
+            .container_info {
+                width: 52%;
+                margin-right: -6px;
+                padding: 12px;
+
+                .product_name {
+                    font-size: 20px;
+                    margin-bottom: 14px;
+                }
+
+                .product_price {
+                    font-size: 18px;
+                    margin-bottom: 14px;
+                }
+
+                .box_btn {
+                    .box_cart {
+                        button {
+                            font-size: 13px;
+                            padding: 12px 16px;
+                        }
+                    }
+                }
+
+                .cartAdditional {
+                    fieldset {
+                        flex-wrap: wrap;
+                        gap: 8px;
+
+                        .iconMethod {
+                            img {
+                                max-width: 44px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -31,6 +31,7 @@ export default function Content() {
         cartAdditional,
         subtotal,
         orderTotal,
+        tableWrapper,
         containerMethod,
         iconMethod,
         totalPayment
@@ -89,7 +90,7 @@ export default function Content() {
             ) : (
                 <>
                     <div className={containerProduct}>
-                        <div>
+                        <div className={tableWrapper}>
                             <table className={cartTable}>
                                 <thead>
                                     <tr>

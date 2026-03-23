@@ -17,30 +17,28 @@
 // ===== RESPONSIVE =====
 @include mixins.mobile {
     .container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px; // Giãn cách giữa left và right
-        margin-bottom: 20px;
-        
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+
         .left {
-            width: 100%;
-            justify-content: space-between; // Để SelectBox và Icon ra hai góc
-            
-            // Có thể chỉnh icon to hơn 1 chút nếu cần để dễ bấm
+            flex: 1;
+            min-width: 0;
+            gap: 12px;
+
             .boxIcon {
+                gap: 8px;
+
                 svg {
-                    width: 24px;
-                    height: 24px;
+                    width: 22px;
+                    height: 22px;
                 }
             }
         }
-        
+
         .right {
-            width: 100%;
-            justify-content: space-between; // Căn Show text và SelectBox
-            border-top: 1px solid rgba(0,0,0,0.05); // Đường phân cách nhẹ
-            padding-top: 12px;
             font-size: 13px;
+            gap: 8px;
         }
     }
 }

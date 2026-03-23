@@ -1,23 +1,50 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import routers from './routers/routers';
-import { Suspense, useEffect } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import SideBarProvider from '@components/SideBarProvider/SideBarProvie';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { cartStore } from './stores/cartStore';
 import { authStore } from './stores/authStore';
-function App() {
-    const accessToken = authStore((state)=>state.accessToken);
-    const getCart = cartStore((state)=>state.getCart);
+import LoadingSkeleton from './pages/LoadingSkeleton/LoadingSkeleton';
 
-    useEffect(()=>{
-        if(accessToken){
+function App() {
+    const { accessToken, user, loading, refreshToken, fetchMe } = authStore();
+    const getCart = cartStore((state) => state.getCart);
+    const [starting, setStarting] = useState(true);
+
+    const init = async () => {
+        try {
+            if (!accessToken) {
+                await refreshToken();
+            }
+            if (accessToken && !user) {
+                await fetchMe();
+            }
+        } catch {
+            // Refresh hoặc fetchMe thất bại → bỏ qua, user chưa đăng nhập
+        } finally {
+            setStarting(false);
+        }
+    };
+
+    useEffect(() => {
+        init();
+    }, []);
+
+    useEffect(() => {
+        if (accessToken) {
             getCart();
         }
-    },[accessToken])
+    }, [accessToken]);
+
+    if (starting || loading) {
+        return <LoadingSkeleton />;
+    }
+
     return (
         <BrowserRouter>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<LoadingSkeleton />}>
                 <SideBarProvider />
                 <Routes>
                     {routers.map((router, index) => (
@@ -31,3 +58,4 @@ function App() {
 }
 
 export default App;
+

@@ -163,6 +163,13 @@
     }
 }
 
+// ========== Table Wrapper ==========
+.tableWrapper {
+    position: relative;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 // ========== Cart Table ==========
 .cartTable {
     width: 100%;
@@ -315,5 +322,232 @@
         color: $secondary-color;
         text-align: center;
         margin-bottom: 20px;
+    }
+}
+
+// ==============================================
+// RESPONSIVE MOBILE (max-width: 767px)
+// ==============================================
+@include mixins.mobile {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px 16px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 40px;
+    }
+
+    .containerProduct {
+        width: 100%;
+
+        .containerCoupon {
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+
+            .coupon {
+                width: 100%;
+                display: flex;
+
+                input {
+                    flex: 1;
+                    font-size: 13px;
+                    padding: 10px;
+                }
+
+                button {
+                    font-size: 13px;
+                    padding: 10px 16px;
+                }
+            }
+
+            button {
+                width: 100%;
+                font-size: 12px;
+                padding: 10px 20px;
+            }
+        }
+    }
+
+    // Bảng cart: ẩn cột SKU, thu nhỏ
+    .cartTable {
+        thead {
+            th {
+                font-size: 11px;
+                padding: 10px 4px;
+                letter-spacing: 0;
+            }
+
+            // Ẩn cột SKU (cột thứ 4)
+            th:nth-child(4) {
+                display: none;
+            }
+        }
+
+        tbody {
+            td {
+                padding: 10px 4px;
+                font-size: 13px;
+            }
+
+            // Ẩn cột SKU
+            td:nth-child(4) {
+                display: none;
+            }
+        }
+    }
+
+    .productCell {
+        gap: 10px;
+        flex-direction: column;
+    }
+
+    .productImage {
+        max-width: 60px;
+    }
+
+    .productName {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .productSize {
+        font-size: 12px;
+    }
+
+    .deleteBtn {
+        padding: 4px;
+    }
+
+    .priceCell {
+        font-size: 12px;
+    }
+
+    .subtotalCell {
+        font-size: 12px;
+    }
+
+    .quantitySelect {
+        padding: 6px 8px;
+        font-size: 13px;
+        min-width: 48px;
+    }
+
+    // Checkout section: full width
+    .containerCheckout {
+        width: 100%;
+
+        .cartTotal {
+            padding: 20px 16px;
+
+            h3 {
+                font-size: 13px;
+            }
+
+            table {
+                .cartSubtotal {
+                    font-size: 14px;
+
+                    .subtotal {
+                        font-size: 13px;
+                    }
+                }
+
+                .orderSubtotal {
+                    font-size: 16px;
+                }
+            }
+
+            .boxBtn {
+                margin-top: 16px;
+
+                button {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .cartAdditional {
+            margin-top: 20px;
+
+            fieldset {
+                padding: 16px 6px;
+                flex-wrap: wrap;
+                gap: 8px;
+
+                legend {
+                    font-size: 12px;
+                }
+
+                .iconMethod {
+                    img {
+                        max-width: 40px;
+                    }
+
+                    span {
+                        font-size: 11px;
+                    }
+                }
+            }
+
+            .totalPayment {
+                font-size: 13px;
+            }
+        }
+    }
+
+    // Empty cart
+    .containerEmptyCart {
+        padding: 16px;
+
+        .title {
+            font-size: 16px;
+            white-space: normal;
+            letter-spacing: 0.5px;
+        }
+
+        .description {
+            font-size: 13px;
+        }
+    }
+}
+
+// ==============================================
+// RESPONSIVE TABLET (768px – 1024px)
+// ==============================================
+@include mixins.tablet {
+    .container {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px 20px;
+        gap: 20px;
+    }
+
+    .containerCheckout {
+        width: 360px;
+
+        .cartTotal {
+            padding: 24px;
+        }
+    }
+
+    .cartTable {
+        thead {
+            th {
+                font-size: 12px;
+                padding: 12px 6px;
+            }
+        }
+
+        tbody {
+            td {
+                padding: 12px 6px;
+            }
+        }
+    }
+
+    .productImage {
+        max-width: 70px;
     }
 }

@@ -7,8 +7,11 @@ export const useSideBarStore = create<SideBarStore>((set,get) => ({
     toggleSideBar: () => set((state) => ({ isOpen: !state.isOpen })),
     detailProduct: null,
     handleOpenSideBar: (type, product=null) => {
-        set(() => ({ type ,detailProduct: product}))
-        get().toggleSideBar();
+        const isAlreadyOpen = get().isOpen;
+        set(() => ({ type, detailProduct: product }));
+        if (!isAlreadyOpen) {
+            get().toggleSideBar();
+        }
     },
     addListCompare: (product) => {
         set((state) => ({ listCompare: [...state.listCompare, product] }))

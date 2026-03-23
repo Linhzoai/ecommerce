@@ -2,6 +2,8 @@
 @use "@styles/mixins.module.scss" as mixins;
 .container{
     @include mixins.flex_box_custom(center, center, 0);
+    position: relative;
+    z-index: 1;
     .timer{
         @include mixins.flex_box_custom(center, center, 10px);
         @include mixins.radius_common(2px);
@@ -17,4 +19,31 @@
         }
     }
 
+}
+
+// ===== RESPONSIVE =====
+@include mixins.mobile {
+    .container {
+        flex-wrap: wrap;
+        gap: 4px;
+
+        .timer {
+            width: 68px;
+            height: 30px;
+            font-size: 11px;
+            margin: 2px;
+            gap: 4px;
+            border-radius: 4px;
+        }
+    }
+}
+
+@include mixins.tablet {
+    .container {
+        .timer {
+            width: 85px;
+            height: 36px;
+            font-size: 15px;
+        }
+    }
 }

@@ -1,4 +1,18 @@
+@use '../../assets/styles/mixins.module.scss' as mixins;
+
 .container{
     padding-top: 83px;
     text-align: center;
+}
+
+@include mixins.mobile {
+    .container {
+        padding-top: 60px;
+    }
+}
+
+@include mixins.tablet {
+    .container {
+        padding-top: 70px;
+    }
 }
