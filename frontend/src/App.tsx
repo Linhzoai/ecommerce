@@ -9,10 +9,10 @@ import { authStore } from './stores/authStore';
 import LoadingSkeleton from './pages/LoadingSkeleton/LoadingSkeleton';
 
 function App() {
-    const { accessToken, user, loading, refreshToken, fetchMe } = authStore();
+    const { accessToken, user, loading, refreshToken, fetchMe} = authStore();
+    const {carts} = cartStore();
     const getCart = cartStore((state) => state.getCart);
     const [starting, setStarting] = useState(true);
-
     const init = async () => {
         try {
             if (!accessToken) {
@@ -21,6 +21,7 @@ function App() {
             if (accessToken && !user) {
                 await fetchMe();
             }
+            await getCart();
         } catch {
             // Refresh hoặc fetchMe thất bại → bỏ qua, user chưa đăng nhập
         } finally {
@@ -38,7 +39,7 @@ function App() {
         }
     }, [accessToken]);
 
-    if (starting || loading) {
+    if (starting || loading || !carts) {
         return <LoadingSkeleton />;
     }
 
