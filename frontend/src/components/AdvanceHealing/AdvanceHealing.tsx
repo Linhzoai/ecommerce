@@ -2,6 +2,7 @@ import MainLayout from '@/components/Layout/Layout';
 import styles from './style.module.scss';
 export default function AdvanceHealing() {
     const { container, desc, containerTile, bar, title } = styles;
+    console.log('AdvanceHealing');
     return (
         <MainLayout>
             <div className={container}>
